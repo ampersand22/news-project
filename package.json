@@ -1,0 +1,25 @@
+{
+  "name": "news-project-front",
+  "engines": {
+    "node": "16.16.0"
+  },
+  "version": "1.0.0",
+  "description": "#successfully cloned by Derrick",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ampersand22/news-project-front.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ampersand22/news-project-front/issues"
+  },
+  "homepage": "https://github.com/ampersand22/news-project-front#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
