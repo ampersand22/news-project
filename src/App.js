@@ -123,6 +123,7 @@ function App() {
             <h5>{article.category}</h5>
             <p>{article.article}</p>
             <p>{article.date}</p>
+
           </div>
           <div>
           <form className="updateForm" onSubmit={() => {
@@ -137,6 +138,7 @@ function App() {
               handleUpdateArticle(article)
             }} value= "Update Article"  />
           </form>
+
           </div>
         </>
           )
