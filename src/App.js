@@ -125,7 +125,7 @@ function App() {
             <p>{article.date}</p>
           </div>
           <div>
-          <form className="newForm" onSubmit={() => {
+          <form className="updateForm" onSubmit={() => {
             handleUpdateArticle(article)
           }}>
             title: <input type="text" onChange={handleTitleChange} />
@@ -135,7 +135,7 @@ function App() {
             image: <input type="text" onChange={handleImageChange} />
             <input type="submit" onClick={() => {
               handleUpdateArticle(article)
-            }} value= "Update Article"/>
+            }} value= "Update Article"  />
           </form>
           </div>
         </>
