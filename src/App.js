@@ -123,7 +123,20 @@ function App() {
             <h5>{article.category}</h5>
             <p>{article.article}</p>
             <p>{article.date}</p>
-
+          </div>
+          <div>
+            <form className="newForm" onSubmit={() => {
+              handleUpdateArticle(article)
+            }}>
+              title: <input type="text" onChange={handleTitleChange} />
+              category: <input type="text" onChange={handleCategoryChange} />
+              article: <input type="text" onChange={handleArticleChange} />
+              date: <input type="text" onChange={handleDateChange} />
+              image: <input type="text" onChange={handleImageChange} />
+              <input type="submit" 
+                onClick={()=>{handleUpdateArticle(article)}}
+                value="Update Article" />
+            </form>
           </div>
         </>
           )
