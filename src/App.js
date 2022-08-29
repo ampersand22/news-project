@@ -124,7 +124,7 @@ function App() {
             <p>{article.article}</p>
             <p>{article.date}</p>
 
-          </div>
+          </div> 
         </>
           )
         })
