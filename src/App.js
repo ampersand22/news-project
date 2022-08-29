@@ -22,6 +22,7 @@ function App() {
   const [date, setDate] = useState("");
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
+  const [news, setNews] = useState([]); 
 
   const handleArticleChange = (e) => {
     setArticle(e.target.value);
@@ -45,11 +46,11 @@ function App() {
     event.preventDefault();
     axios
       .post("https://news-project-back.herokuapp.com/news", {
-        article: String,
-        title: String,
-        date: String,
-        category: String,
-        image: String
+        article: article,
+        title: title,
+        date: date,
+        category: category,
+        image: image
       })
       .then(() => {
         axios.get("https://news-project-back.herokuapp.com/news").then((response) => {
@@ -67,6 +68,22 @@ function App() {
 				});
 			});
 	};
+
+  const handleUpdateArticle = (articleUpdate) => {
+    axios
+    .put(`https://news-project-back.herokuapp.com/news/${articleUpdate._id}`, {
+      article: article,
+      title: title,
+      date: date,
+      category: category,
+      image: image
+    })
+    .then(() => {
+      axios.get("https://news-project-back.herokuapp.com/news").then((response) => {
+        setNews(response.data)
+          });
+      });
+    };
   
   
   
@@ -86,17 +103,47 @@ function App() {
       <h1>Sarcastic News Site (Create an actual name)</h1>
 
       <section className='createForm'>
-        <form className="newForm" onSubmit={handleNewArticleForm}>
+        <form className="newForm" onSubmit={handleNewArticleFormSubmit}>
           title: <input type="text" onChange={handleTitleChange} />
           category: <input type="text" onChange={handleCategoryChange} />
           article: <input type="text" onChange={handleArticleChange} />
           date: <input type="text" onChange={handleDateChange} />
           image: <input type="text" onChange={handleImageChange} />
+          <input type="submit" value="Add New Article" />
         </form>
       </section>
 
       <section className='card-deck showPage'>
+        {news.map((article) => {
+          return(
+        <>
+          <div className="card" key={article._id}>
+            <img src={article.image}/>
+            <h2>{article.title}</h2>
+            <h5>{article.category}</h5>
+            <p>{article.article}</p>
+            <p>{article.date}</p>
 
+          </div>
+          <div>
+          <form className="updateForm" onSubmit={() => {
+            handleUpdateArticle(article)
+          }}>
+            title: <input type="text" onChange={handleTitleChange} />
+            category: <input type="text" onChange={handleCategoryChange} />
+            article: <input type="text" onChange={handleArticleChange} />
+            date: <input type="text" onChange={handleDateChange} />
+            image: <input type="text" onChange={handleImageChange} />
+            <input type="submit" onClick={() => {
+              handleUpdateArticle(article)
+            }} value= "Update Article"  />
+          </form>
+
+          </div>
+        </>
+          )
+        })
+      }
       </section>
     </div>
   );
