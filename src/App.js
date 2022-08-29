@@ -138,6 +138,21 @@ function App() {
                 value="Update Article" />
             </form>
           </div>
+          <div>
+          <form className="updateForm" onSubmit={() => {
+            handleUpdateArticle(article)
+          }}>
+            title: <input type="text" onChange={handleTitleChange} />
+            category: <input type="text" onChange={handleCategoryChange} />
+            article: <input type="text" onChange={handleArticleChange} />
+            date: <input type="text" onChange={handleDateChange} />
+            image: <input type="text" onChange={handleImageChange} />
+            <input type="submit" onClick={() => {
+              handleUpdateArticle(article)
+            }} value= "Update Article"  />
+          </form>
+
+          </div>
         </>
           )
         })
