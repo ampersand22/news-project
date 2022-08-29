@@ -115,7 +115,7 @@ function App() {
     <div className="main">
       <h1>The App.Post</h1>
       <button onClick={newArticlePage}>Add New Article</button>
-      <button onClick={showArticlesPage}>Add New Article</button>
+      <button onClick={showArticlesPage}>Show Articles</button>
     { newArticleForm ?
       <section className='createForm'>
         <form className="newForm" onSubmit={handleNewArticleFormSubmit}>
@@ -130,9 +130,8 @@ function App() {
     : null }
     { showArticles ?
       <section className='card-deck showPage'>
-        {news.map((article) => {
+        {news.map((article, index) => {
           return(
-        <>
           <div className="card" key={article._id}>
           { toggleEdit ?
             <div className="card-content">
@@ -160,10 +159,9 @@ function App() {
             </div>
           }   
             <div className='card-button'>
-							<button onClick={(event) =>{cardToggle(article)}}>Edit this Article</button>
+							<button onClick={() =>{cardToggle(index)}}>{ toggleEdit ? "Edit This Article" : "Show All Articles" }</button>
 						</div>
           </div>
-        </>
           )
         })
       }
