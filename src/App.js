@@ -136,18 +136,6 @@ function App() {
         {news.map((article, index) => {
           return(
           <div className="card" key={article._id}>
-<<<<<<< HEAD
-            <img src={article.image}/>
-            <h2>{article.title}</h2>
-            <h5>{article.category}</h5>
-            <p>{article.article}</p>
-            <p>{article.date}</p>
-          </div>
-          <div>
-            <form className="newForm" onSubmit={() => {
-              handleUpdateArticle(article)
-            }}>
-=======
           { toggleEdit ?
             <div className="card-content">
               <img src={article.image}/>
@@ -161,53 +149,23 @@ function App() {
             <form className="updateForm" onSubmit={() => {
                 handleUpdateArticle(article)
               }}>
->>>>>>> 7f4bb687bd62cd642cdef95d2b52718b6297938d
               title: <input type="text" onChange={handleTitleChange} />
               category: <input type="text" onChange={handleCategoryChange} />
               article: <input type="text" onChange={handleArticleChange} />
               date: <input type="text" onChange={handleDateChange} />
               image: <input type="text" onChange={handleImageChange} />
-<<<<<<< HEAD
-              <input type="submit" 
-                onClick={()=>{handleUpdateArticle(article)}}
-                value="Update Article" />
-            </form>
-          </div>
-          <div>
-          <form className="updateForm" onSubmit={() => {
-            handleUpdateArticle(article)
-          }}>
-            title: <input type="text" onChange={handleTitleChange} />
-            category: <input type="text" onChange={handleCategoryChange} />
-            article: <input type="text" onChange={handleArticleChange} />
-            date: <input type="text" onChange={handleDateChange} />
-            image: <input type="text" onChange={handleImageChange} />
-            <input type="submit" onClick={() => {
-              handleUpdateArticle(article)
-            }} value= "Update Article"  />
-          </form>
-
-=======
               <input type="submit" onClick={() => {
                 handleUpdateArticle(article)
               }} value= "Update Article"  />
               <button onClick={(event) => { handleDeleteArticle(article)}}>Delete</button>
             </form>
             </div>
-<<<<<<< HEAD
-          }   
-            <div className='card-button'>
-							<button onClick={() =>{cardToggle(index)}}>{ toggleEdit ? "Edit This Article" : "Show All Articles" }</button>
-						</div>
->>>>>>> 7f4bb687bd62cd642cdef95d2b52718b6297938d
-=======
           }
         
         {/* the button below this comment the one that is acting up, it is used as the ternary for the edit and show pages*/}
         {/* adding functionality to make it work on only one index is what i have been having an issue with */}
         {/* right now the cardToggle function works on all at the same time, unsure of how to call it appropriately */}
         <button  onClick={(event) => {cardToggle(`https://news-project-back.herokuapp.com/news/${article}`)}}> { toggleEdit ? "Edit This Article" : "Show All Articles" } </button>
->>>>>>> def20cd7d7ea835ddbd84f3746b174f6392c1faa
           </div>
           )
         })
