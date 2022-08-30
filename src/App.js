@@ -99,8 +99,10 @@ function App() {
     })
   }, [])
 
-  const cardToggle = () => {
-      { toggleEdit ? setToggleEdit(false) : setToggleEdit(true); }
+  const cardToggle = (article) => {
+      // { toggleEdit ? setToggleEdit(false) : setToggleEdit(true); }
+      document.getElementById("index"+article._id, "edit"+article._id).classList.toggle("activeEdit");
+      // document.getElementById("edit"+article._id).classList.toggle("activeEdit");
   }
 
   const showArticlesPage = () => {
@@ -135,17 +137,17 @@ function App() {
       <section className='card-deck showPage'>
         {news.map((article, index) => {
           return(
-          <div className="card" key={article._id}>
-          { toggleEdit ?
-            <div className="card-content">
+          <div  className="card activeShow"  key={article._id}>
+         
+            <div className="card-content" id={"index"+article._id}>
               <img src={article.image}/>
               <h2>{article.title}</h2>
               <h5>{article.category}</h5>
               <p>{article.article}</p>
               <p>{article.date}</p>
             </div>
-          :
-            <div>
+          
+            <div id={"edit"+article._id} className='activeEdit'>
             <form className="updateForm" onSubmit={() => {
                 handleUpdateArticle(article)
               }}>
@@ -160,12 +162,12 @@ function App() {
               <button onClick={(event) => { handleDeleteArticle(article)}}>Delete</button>
             </form>
             </div>
-          }
+          
         
         {/* the button below this comment the one that is acting up, it is used as the ternary for the edit and show pages*/}
         {/* adding functionality to make it work on only one index is what i have been having an issue with */}
         {/* right now the cardToggle function works on all at the same time, unsure of how to call it appropriately */}
-        <button  onClick={(event) => {cardToggle(`https://news-project-back.herokuapp.com/news/${article}`)}}> { toggleEdit ? "Edit This Article" : "Show All Articles" } </button>
+        <button onClick={() => {cardToggle(article)}}>Edit </button>
           </div>
           )
         })
