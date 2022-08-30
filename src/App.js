@@ -117,9 +117,24 @@ function App() {
 
   return (
     <div className="container-fluid">
-      <h1>The App.Post</h1>
-      <button onClick={newArticlePage}>Add New Article</button>
-      <button onClick={showArticlesPage}>Show Article</button>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <div className="container-fluid">
+          <a className="navbar-brand" onClick={showArticlesPage} href="#">The App.Post</a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" onClick={showArticlesPage} href="#">Show All Articles</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" onClick={newArticlePage} href="#">Add New Article</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     { newArticleForm ?
       <section className='createForm'>
         <form className="newForm" onSubmit={handleNewArticleFormSubmit}>
