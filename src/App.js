@@ -119,9 +119,7 @@ function App() {
     <div className="main">
       <h1>The App.Post</h1>
       <button onClick={newArticlePage}>Add New Article</button>
-
       <button onClick={showArticlesPage}>Show Article</button>
-
     { newArticleForm ?
       <section className='createForm'>
         <form className="newForm" onSubmit={handleNewArticleFormSubmit}>
