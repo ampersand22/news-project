@@ -116,7 +116,7 @@ function App() {
 
 
   return (
-    <div className="main">
+    <div className="container-fluid">
       <h1>The App.Post</h1>
       <button onClick={newArticlePage}>Add New Article</button>
       <button onClick={showArticlesPage}>Show Article</button>
@@ -134,39 +134,44 @@ function App() {
     : null }
     { showArticles ?
       <section className='card-deck'>
-        {news.map((article, index) => {
-          return(
-          <div  className="card activeShow"  key={article._id}>
-         
-            <div className="card-content" id={"index"+article._id}>
-              <img src={article.image}/>
-              <h2>{article.title}</h2>
-              <h5>{article.category}</h5>
-              <p>{article.article}</p>
-              <p>{article.date}</p>
-            </div>
-          
-            <div id={"edit"+article._id} className='activeEdit'>
-            <form className="updateForm" onSubmit={(event) => {handleUpdateArticle(article)}}>
-              title: <input type="text" defaultValue={article.title} onChange={handleTitleChange} /> <br/>
-              category: <input type="text" defaultValue={article.category} onChange={handleCategoryChange} /> <br/>
-              article: <input type="text" defaultValue={article.article} onChange={handleArticleChange} /> <br/>
-              date: <input type="text" defaultValue={article.date} onChange={handleDateChange} /> <br/>
-              image: <input type="text" defaultValue={article.image} onChange={handleImageChange} /> <br/>
-              <input type="submit" value="Update Article"/> <br/>
-            </form>
-            <button onClick={(event) => { handleDeleteArticle(article)}}>Delete</button>
-            </div>
-          
-        
-        {/* the button below this comment the one that is acting up, it is used as the ternary for the edit and show pages*/}
-        {/* adding functionality to make it work on only one index is what i have been having an issue with */}
-        {/* right now the cardToggle function works on all at the same time, unsure of how to call it appropriately */}
-        <button onClick={() => {cardToggle(article)}}>Edit </button>
-          </div>
-          )
-        })
-      }
+        <div className="row"  key={article._id}></div>
+        <div className="row row-cols-1 row-cols-md-3 g-4">
+          {news.map((article, index) => {
+            return(
+                  <div className="col">
+                    <div className="card h-25">
+                      <div class="ratio ratio-16x9">
+                        <img src={article.image} className="card-img-top" alt="..."/>
+                      </div>
+                      <div className="card-body" id={'index'+article._id}>
+                        <h5 className="card-title">{article.title}</h5>
+                        <p className="card-text">{article.article}</p>
+                      </div>
+                      <div id={"edit"+article._id} className='activeEdit'>
+                        <form className="updateForm" onSubmit={(event) => {handleUpdateArticle(article)}}>
+                          title: <input type="text" defaultValue={article.title} onChange={handleTitleChange} /> <br/>
+                          category: <input type="text" defaultValue={article.category} onChange={handleCategoryChange} /> <br/>
+                          article: <input type="text" defaultValue={article.article} onChange={handleArticleChange} /> <br/>
+                          date: <input type="text" defaultValue={article.date} onChange={handleDateChange} /> <br/>
+                          image: <input type="text" defaultValue={article.image} onChange={handleImageChange} /> <br/>
+                          <input className="btn btn-secondary"type="submit" value="Update Article"/> <br/>
+                        </form>
+                        <button onClick={(event) => { handleDeleteArticle(article)}} className="btn btn-danger" >Delete</button>
+                      </div>
+                        {/* the button below this comment the one that is acting up, it is used as the ternary for the edit and show pages*/}
+                        {/* adding functionality to make it work on only one index is what i have been having an issue with */}
+                        {/* right now the cardToggle function works on all at the same time, unsure of how to call it appropriately */}
+                      <button className="btn btn-primary" onClick={() => {cardToggle(article)}}>Edit</button>
+                      <div className="d-flex justify-content-between card-footer">
+                        <small className="text-muted">Category: {article.category}</small>
+                        <small className="text-muted">Date: {article.date}</small>
+                      </div>
+                    </div>
+                  </div>
+              )
+            })
+          }
+        </div>
       </section>
     : null}
     </div>
