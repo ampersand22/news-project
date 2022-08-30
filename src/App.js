@@ -28,7 +28,6 @@ function App() {
   const [toggleEdit, setToggleEdit] = useState(true);
   const [newArticleForm, setNewArticleForm] = useState(false);
   const [showArticles, setShowArticles] = useState(true); 
-  const [editIndex, setEditIndex] = useState(null);
 
   const handleArticleChange = (e) => {
     setArticle(e.target.value);
@@ -78,14 +77,15 @@ function App() {
   const handleUpdateArticle = (articleUpdate) => {
     axios
     .put(`https://news-project-back.herokuapp.com/news/${articleUpdate._id}`, {
-      article: article,
-      title: title,
-      date: date,
-      category: category,
-      image: image
+      article: article ? article : articleUpdate.article,
+      title: title ? title : articleUpdate.title,
+      date: date ? date : articleUpdate.date,
+      category: category ? category : articleUpdate.category,
+      image: image ? image : articleUpdate.image
     })
     .then(() => {
-      axios.get("https://news-project-back.herokuapp.com/news").then((response) => {
+      axios.get("https://news-project-back.herokuapp.com/news")
+      .then((response) => {
         setNews(response.data)
           });
       });
@@ -100,9 +100,8 @@ function App() {
   }, [])
 
   const cardToggle = (article) => {
-      // { toggleEdit ? setToggleEdit(false) : setToggleEdit(true); }
-      document.getElementById("index"+article._id, "edit"+article._id).classList.toggle("activeEdit");
-      // document.getElementById("edit"+article._id).classList.toggle("activeEdit");
+      document.getElementById("edit"+article._id).classList.toggle("activeEdit");
+      document.getElementById("index"+article._id).classList.toggle("activeEdit");
   }
 
   const showArticlesPage = () => {
@@ -134,7 +133,7 @@ function App() {
       </section>
     : null }
     { showArticles ?
-      <section className='card-deck showPage'>
+      <section className='card-deck'>
         {news.map((article, index) => {
           return(
           <div  className="card activeShow"  key={article._id}>
@@ -148,19 +147,15 @@ function App() {
             </div>
           
             <div id={"edit"+article._id} className='activeEdit'>
-            <form className="updateForm" onSubmit={() => {
-                handleUpdateArticle(article)
-              }}>
-              title: <input type="text" onChange={handleTitleChange} />
-              category: <input type="text" onChange={handleCategoryChange} />
-              article: <input type="text" onChange={handleArticleChange} />
-              date: <input type="text" onChange={handleDateChange} />
-              image: <input type="text" onChange={handleImageChange} />
-              <input type="submit" onClick={() => {
-                handleUpdateArticle(article)
-              }} value= "Update Article"  />
-              <button onClick={(event) => { handleDeleteArticle(article)}}>Delete</button>
+            <form className="updateForm" onSubmit={(event) => {handleUpdateArticle(article)}}>
+              title: <input type="text" defaultValue={article.title} onChange={handleTitleChange} /> <br/>
+              category: <input type="text" defaultValue={article.category} onChange={handleCategoryChange} /> <br/>
+              article: <input type="text" defaultValue={article.article} onChange={handleArticleChange} /> <br/>
+              date: <input type="text" defaultValue={article.date} onChange={handleDateChange} /> <br/>
+              image: <input type="text" defaultValue={article.image} onChange={handleImageChange} /> <br/>
+              <input type="submit" value="Update Article"/> <br/>
             </form>
+            <button onClick={(event) => { handleDeleteArticle(article)}}>Delete</button>
             </div>
           
         
