@@ -18,7 +18,6 @@ import { useState, useEffect } from 'react'
 function App() {
 
 
-
   const [article, setArticle] = useState("");
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
@@ -63,6 +62,7 @@ function App() {
           setNews(response.data);
         });
       });
+      showArticlesPage()
   };
 
   const handleDeleteArticle = (articleDelete) => {
@@ -91,7 +91,7 @@ function App() {
           });
       });
     };
-  
+
   useEffect(() => {
     axios
     .get('https://news-project-back.herokuapp.com/news')
@@ -161,21 +161,11 @@ function App() {
     { showArticles ?
       <section className='card-deck'>
         <div className="row"></div>
-        <div className="row row-cols-1 row-cols-md-3 g-4">
-
-
-
-
-
-
-
-
-
-
+        <div className="card-parent row row-cols-1 row-cols-md-3 g-4">
           {news.map((article, index) => {
             return(
-                  <div className="col" key={article._id}>
-                    <div id ={"card"+article._id} className="card h-25" onClick={() => displayArticle(article)}>
+
+                    <div id ={"card"+article._id} className="col card h-25" key={article._id} /*onClick={() => displayArticle(article)}*/>
                       <div className="ratio ratio-16x9">
                         <img id={'img'+article._id} src={article.image} className="card-img-top" alt="..."/>
                       </div>
@@ -205,18 +195,10 @@ function App() {
                         <small className="text-muted">Date: {article.date}</small>
                       </div>
                     </div>
-                  </div>
+
               )
             })
           }
-
-
-
-
-
-
-
-
         </div>
       </section>
     : null}
