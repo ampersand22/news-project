@@ -28,6 +28,7 @@ function App() {
   const [toggleEdit, setToggleEdit] = useState(true);
   const [newArticleForm, setNewArticleForm] = useState(false);
   const [showArticles, setShowArticles] = useState(true); 
+  const [previewArticle, setPreviewArticle] = useState("Show More");
 
   const handleArticleChange = (e) => {
     setArticle(e.target.value);
@@ -115,6 +116,10 @@ function App() {
     setShowArticles(false);
   }
 
+  const showMore = (article) => {
+    {previewArticle==="Show More" ? setPreviewArticle("Show Less") : setPreviewArticle("Show More")}
+    document.getElementById("articlePreview"+article._id).classList.toggle("text-truncate");
+  }
 
   return (
     <div className="container-fluid">
@@ -150,19 +155,20 @@ function App() {
     : null }
     { showArticles ?
       <section className='card-deck'>
-        <div className="row"  key={article._id}></div>
+        <div className="row"></div>
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {news.map((article, index) => {
             return(
-                  <div className="col">
+                  <div className="col" key={article._id}>
                     <div className="card h-25">
                       <div className="ratio ratio-16x9">
                         <img src={article.image} className="card-img-top" alt="..."/>
                       </div>
                       <div className="card-body" id={'index'+article._id}>
-                        <h5 className="card-title">{article.title}</h5>
-                        <p className="card-text">{article.article}</p>
-                        <button className="btn btn-primary" onClick={() => {cardToggle(article)}}>Edit this article</button>
+                        <h5 className="card-title ">{article.title}</h5>
+                        <p id={"articlePreview"+article._id} className="card-text text-truncate">{article.article}</p>
+                        <button className="btn btn-secondary" onClick={() => {showMore(article)}}>{previewArticle}</button>
+                        <button className="btn btn-primary" onClick={() => {cardToggle(article)}}>Edit</button>
                       </div>
                       <div id={"edit"+article._id} className='activeEdit'>
                         <form className="updateForm" onSubmit={(event) => {handleUpdateArticle(article)}}>
@@ -173,8 +179,8 @@ function App() {
                           image: <input type="text" defaultValue={article.image} onChange={handleImageChange} /> <br/>
                           <input className="btn btn-secondary"type="submit" value="Update Article"/> <br/>
                         </form>
-                        <button onClick={(event) => { handleDeleteArticle(article)}} className="btn btn-danger" >Delete</button> <br/>
-                        <button className="btn btn-primary" onClick={() => {cardToggle(article)}}>Show all Articles</button>
+                        <button className="btn btn-primary" onClick={() => {cardToggle(article)}}>Show Articles</button>
+                        <button onClick={(event) => { handleDeleteArticle(article)}} className="btn btn-danger" >Delete</button>
                       </div>
                         {/* the button below this comment the one that is acting up, it is used as the ternary for the edit and show pages*/}
                         {/* adding functionality to make it work on only one index is what i have been having an issue with */}
