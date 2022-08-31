@@ -32,6 +32,15 @@
   display: none;
 }
 
+.thisArticle{
+  transition-duration: .5s ease-out;
+  width: 100vw;
+  height: auto;
+  z-index: 25;
+  position: absolute;
+  left: 0;
+}
+
 
 
 @keyframes App-logo-spin {

@@ -119,6 +119,11 @@ function App() {
   const showMore = (article) => {
     {previewArticle==="Show More" ? setPreviewArticle("Show Less") : setPreviewArticle("Show More")}
     document.getElementById("articlePreview"+article._id).classList.toggle("text-truncate");
+    document.getElementById("card"+article._id).classList.remove("thisArticle");
+  }
+
+  const displayArticle = (article) => {
+    document.getElementById("card"+article._id).classList.add("thisArticle");
   }
 
   return (
@@ -157,12 +162,22 @@ function App() {
       <section className='card-deck'>
         <div className="row"></div>
         <div className="row row-cols-1 row-cols-md-3 g-4">
+
+
+
+
+
+
+
+
+
+
           {news.map((article, index) => {
             return(
                   <div className="col" key={article._id}>
-                    <div className="card h-25">
+                    <div id ={"card"+article._id} className="card h-25" onClick={() => displayArticle(article)}>
                       <div className="ratio ratio-16x9">
-                        <img src={article.image} className="card-img-top" alt="..."/>
+                        <img id={'img'+article._id} src={article.image} className="card-img-top" alt="..."/>
                       </div>
                       <div className="card-body" id={'index'+article._id}>
                         <h5 className="card-title ">{article.title}</h5>
@@ -194,6 +209,14 @@ function App() {
               )
             })
           }
+
+
+
+
+
+
+
+
         </div>
       </section>
     : null}
