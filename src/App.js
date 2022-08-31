@@ -102,6 +102,7 @@ function App() {
   const cardToggle = (article) => {
       document.getElementById("edit"+article._id).classList.toggle("activeEdit");
       document.getElementById("index"+article._id).classList.toggle("activeEdit");
+      {toggleEdit ? setToggleEdit(false) : setToggleEdit(true)}
   }
 
   const showArticlesPage = () => {
@@ -155,12 +156,13 @@ function App() {
             return(
                   <div className="col">
                     <div className="card h-25">
-                      <div class="ratio ratio-16x9">
+                      <div className="ratio ratio-16x9">
                         <img src={article.image} className="card-img-top" alt="..."/>
                       </div>
                       <div className="card-body" id={'index'+article._id}>
                         <h5 className="card-title">{article.title}</h5>
                         <p className="card-text">{article.article}</p>
+                        <button className="btn btn-primary" onClick={() => {cardToggle(article)}}>Edit this article</button>
                       </div>
                       <div id={"edit"+article._id} className='activeEdit'>
                         <form className="updateForm" onSubmit={(event) => {handleUpdateArticle(article)}}>
@@ -171,12 +173,12 @@ function App() {
                           image: <input type="text" defaultValue={article.image} onChange={handleImageChange} /> <br/>
                           <input className="btn btn-secondary"type="submit" value="Update Article"/> <br/>
                         </form>
-                        <button onClick={(event) => { handleDeleteArticle(article)}} className="btn btn-danger" >Delete</button>
+                        <button onClick={(event) => { handleDeleteArticle(article)}} className="btn btn-danger" >Delete</button> <br/>
+                        <button className="btn btn-primary" onClick={() => {cardToggle(article)}}>Show all Articles</button>
                       </div>
                         {/* the button below this comment the one that is acting up, it is used as the ternary for the edit and show pages*/}
                         {/* adding functionality to make it work on only one index is what i have been having an issue with */}
                         {/* right now the cardToggle function works on all at the same time, unsure of how to call it appropriately */}
-                      <button className="btn btn-primary" onClick={() => {cardToggle(article)}}>Edit</button>
                       <div className="d-flex justify-content-between card-footer">
                         <small className="text-muted">Category: {article.category}</small>
                         <small className="text-muted">Date: {article.date}</small>
