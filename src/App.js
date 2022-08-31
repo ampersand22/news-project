@@ -150,13 +150,13 @@ function App() {
     : null }
     { showArticles ?
       <section className='card-deck'>
-        <div className="row"  key={article._id}></div>
+        <div className="row"></div>
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {news.map((article, index) => {
             return(
-                  <div className="col">
-                    <div className="card h-25">
-                      <div class="ratio ratio-16x9">
+                  <div className="col" key={article._id}>
+                    <div className="card h-25" >
+                      <div className="ratio ratio-16x9">
                         <img src={article.image} className="card-img-top" alt="..."/>
                       </div>
                       <div className="card-body" id={'index'+article._id}>
