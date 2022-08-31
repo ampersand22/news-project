@@ -48,3 +48,10 @@
   object-fit: cover;
 
 }
+
+.footer {
+  font-size: 1.1em;
+  width: 100%;
+  position: relative;
+  height: auto;
+}

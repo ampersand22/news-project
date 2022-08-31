@@ -189,6 +189,16 @@ function App() {
         </div>
       </section>
     : null}
+    
+    <div className="footer fixed-xl-bottom container text-center"> Footer
+        <p>The App.post is a satirical entity that meant for entertainment purposes only.</p>
+        <p>3378 For-Shizzle Blvd</p>
+        <p>Mt. Olympus, Montana 86557</p>
+        
+
+      
+    </div>
+    
     </div>
   );
 }
