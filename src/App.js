@@ -28,6 +28,7 @@ function App() {
   const [toggleEdit, setToggleEdit] = useState(true);
   const [newArticleForm, setNewArticleForm] = useState(false);
   const [showArticles, setShowArticles] = useState(true); 
+  const [previewArticle, setPreviewArticle] = useState(false)
 
   const handleArticleChange = (e) => {
     setArticle(e.target.value);
@@ -160,7 +161,10 @@ function App() {
                       </div>
                       <div className="card-body" id={'index'+article._id}>
                         <h5 className="card-title">{article.title}</h5>
-                        <p className="card-text">{article.article}</p>
+                        { previewArticle ?
+                        <p className="card-text">{article.article}</p> : ''
+                        }
+                        <button className="btn btn-secondary" onClick={()=> setPreviewArticle(!previewArticle)}>Show Article</button>     
                       </div>
                       <div id={"edit"+article._id} className='activeEdit'>
                         <form className="updateForm" onSubmit={(event) => {handleUpdateArticle(article)}}>
