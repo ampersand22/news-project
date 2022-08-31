@@ -103,6 +103,7 @@ function App() {
   const cardToggle = (article) => {
       document.getElementById("edit"+article._id).classList.toggle("activeEdit");
       document.getElementById("index"+article._id).classList.toggle("activeEdit");
+      {toggleEdit ? setToggleEdit(false) : setToggleEdit(true)}
   }
 
   const showArticlesPage = () => {
@@ -184,7 +185,6 @@ function App() {
                         {/* the button below this comment the one that is acting up, it is used as the ternary for the edit and show pages*/}
                         {/* adding functionality to make it work on only one index is what i have been having an issue with */}
                         {/* right now the cardToggle function works on all at the same time, unsure of how to call it appropriately */}
-
                       <div className="d-flex justify-content-between card-footer">
                         <small className="text-muted">Category: {article.category}</small>
                         <small className="text-muted">Date: {article.date}</small>
