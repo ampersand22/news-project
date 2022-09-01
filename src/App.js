@@ -161,7 +161,7 @@ function App() {
         </form>
       </section>
     : null }
-    <div style={{paddingTop:"150px"}}>
+    <div className="mb-3" style={{paddingTop:"150px"}}>
       { showArticles ?
         <section className='card-deck'>
           <div className="row"></div>
