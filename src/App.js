@@ -1,13 +1,7 @@
 import './App.css';
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-
-
-
-
-
-
-
+import Login from './components/Login';
 
 
 
@@ -136,6 +130,9 @@ function App() {
           </div>
         </div>
       </nav>
+
+    <Login />
+
     { newArticleForm ?
       <section className='createForm'>
         <form className="newForm" onSubmit={handleNewArticleFormSubmit}>
