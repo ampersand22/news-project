@@ -43,6 +43,10 @@
   object-fit: cover;
 }
 
+.navbar-toggler {
+  background-color:grey;
+}
+
 
 @keyframes App-logo-spin {
   from {
@@ -52,4 +56,3 @@
     transform: rotate(360deg);
   }
 }
-
