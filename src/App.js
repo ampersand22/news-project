@@ -90,6 +90,7 @@ function App() {
         setNews(response.data)
           });
       });
+      showArticlesPage()
     };
 
   useEffect(() => {
