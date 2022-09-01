@@ -31,7 +31,7 @@ function App() {
     }
     const handleImageChange = (e) => {
       setImage(e.target.value);
-      }
+      } 
 
 
 
