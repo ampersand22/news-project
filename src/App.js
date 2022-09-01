@@ -146,7 +146,7 @@ function App() {
           {news.map((article, index) => {
             return(
                   <div className="col" key={article._id}>
-                    <div className="card h-25">
+                    <div className="card h-100 border border-secondary">
                       <div className="ratio ratio-16x9">
                         <img src={article.image} className="card-img-top" alt="..."/>
                       </div>
