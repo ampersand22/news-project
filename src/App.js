@@ -101,8 +101,8 @@ function App() {
   }, [])
 
   const cardToggle = (article) => {
-      document.getElementById("edit"+article._id).classList.toggle("activeEdit");
-      document.getElementById("index"+article._id).classList.toggle("activeEdit");
+      document.getElementById("edit"+article._id).classList.toggle("hide");
+      document.getElementById("index"+article._id).classList.toggle("hide");
       {toggleEdit ? setToggleEdit(false) : setToggleEdit(true)}
   }
 
@@ -122,9 +122,7 @@ function App() {
     document.getElementById("card"+article._id).classList.remove("thisArticle");
   }
 
-  const displayArticle = (article) => {
-    document.getElementById("card"+article._id).classList.add("thisArticle");
-  }
+  
 
   return (
     <div className="container-fluid">
@@ -161,31 +159,47 @@ function App() {
     { showArticles ?
       <section className='card-deck'>
         <div className="row"></div>
-        <div className="card-parent row row-cols-1 row-cols-md-3 g-4">
-          {news.map((article, index) => {
+        <div className="row row-cols-xs-1 row-cols-md-2 row-cols-lg-3 g-4">
+          {news.map((article) => {
             return(
-
-                    <div id ={"card"+article._id} className="col card h-25" key={article._id} /*onClick={() => displayArticle(article)}*/>
+                  <div className='col' key={article._id}>
+                    <div id ={"card"+article._id} className="card h-100 border border-secondary">
                       <div className="ratio ratio-16x9">
                         <img id={'img'+article._id} src={article.image} className="card-img-top" alt="..."/>
                       </div>
                       <div className="card-body" id={'index'+article._id}>
                         <h5 className="card-title ">{article.title}</h5>
                         <p id={"articlePreview"+article._id} className="card-text text-truncate">{article.article}</p>
-                        <button className="btn btn-secondary" onClick={() => {showMore(article)}}>{previewArticle}</button>
-                        <button className="btn btn-primary" onClick={() => {cardToggle(article)}}>Edit</button>
+                        <button className="btn btn-secondary button" onClick={() => {showMore(article)}}>{previewArticle}</button><br/>
+                        <button className="btn btn-primary button" onClick={() => {cardToggle(article)}}>Edit</button>
                       </div>
-                      <div id={"edit"+article._id} className='activeEdit'>
+                      <div id={"edit"+article._id} className='hide'>
                         <form className="updateForm" onSubmit={(event) => {handleUpdateArticle(article)}}>
-                          title: <input type="text" defaultValue={article.title} onChange={handleTitleChange} /> <br/>
-                          category: <input type="text" defaultValue={article.category} onChange={handleCategoryChange} /> <br/>
-                          article: <input type="text" defaultValue={article.article} onChange={handleArticleChange} /> <br/>
-                          date: <input type="text" defaultValue={article.date} onChange={handleDateChange} /> <br/>
-                          image: <input type="text" defaultValue={article.image} onChange={handleImageChange} /> <br/>
-                          <input className="btn btn-secondary"type="submit" value="Update Article"/> <br/>
+                          <div className="form-floating">
+                            <input type="text" className='form-control mt-2' id="floatingTitle" defaultValue={article.title} onChange={handleTitleChange} />
+                            <label htmlFor="floatingTitle">Title</label>
+                          </div>
+                          <div className="form-floating">
+                            <input type="text" className='form-control mt-2' id='floatingCategory' defaultValue={article.category} onChange={handleCategoryChange} />
+                            <label htmlFor="floatingCategory">Category</label>
+                          </div>
+                          <div className="form-floating">
+                            <textarea className="form-control mt-2" id="floatingArticle" defaultChecked={article.article} onChange={handleArticleChange}></textarea>
+                            <label htmlFor="floatingArticle">Article</label>
+                          </div>
+                          <div className="form-floating">
+                            <input type="text" className='form-control mt-2' id='floatingDate' defaultValue={article.date} onChange={handleDateChange} />
+                            <label htmlFor="floatingDate">Date</label>
+                          </div>
+                          <div className="form-floating">
+                          <input type="text" className='form-control mt-2' id='floatingImg' defaultValue={article.image} onChange={handleImageChange} />
+                          <label htmlFor="floatingImg">Image URL</label>
+                          </div>
+                          
+                          <input className="btn btn-secondary mt-2 button"type="submit" value="Update Article"/> <br/>
                         </form>
-                        <button className="btn btn-primary" onClick={() => {cardToggle(article)}}>Show Articles</button>
-                        <button onClick={(event) => { handleDeleteArticle(article)}} className="btn btn-danger" >Delete</button>
+                        <button className="btn btn-primary button" onClick={() => {cardToggle(article)}}>Show Articles</button> <br/>
+                        <button className="btn btn-danger button"  onClick={(event) => { handleDeleteArticle(article)}} >Delete</button>
                       </div>
                         {/* the button below this comment the one that is acting up, it is used as the ternary for the edit and show pages*/}
                         {/* adding functionality to make it work on only one index is what i have been having an issue with */}
@@ -195,6 +209,7 @@ function App() {
                         <small className="text-muted">Date: {article.date}</small>
                       </div>
                     </div>
+                  </div>
 
               )
             })
