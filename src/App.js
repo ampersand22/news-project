@@ -176,8 +176,8 @@ function App() {
                         <div className="card-body" id={'index'+article._id}>
                           <h5 className="card-title ">{article.title}</h5>
                           <p id={"articlePreview"+article._id} className="card-text text-truncate">{article.article}</p>
-                          <button className="btn btn-secondary button" onClick={() => {showMore(article)}}>{previewArticle}</button><br/>
-                          <button className="btn btn-primary button" onClick={() => {cardToggle(article)}}>Edit</button>
+                          <button className="btn btn-primary button mb-2" onClick={() => {showMore(article)}}>{previewArticle}</button><br/>
+                          <button className="btn btn-secondary button" onClick={() => {cardToggle(article)}}>Edit</button>
                         </div>
                         <div id={"edit"+article._id} className='hide'>
                           <form className="updateForm" onSubmit={(event) => {handleUpdateArticle(article)}}>
@@ -202,9 +202,9 @@ function App() {
                             <label htmlFor="floatingImg">Image URL</label>
                             </div>
                             
-                            <input className="btn btn-secondary mt-2 button"type="submit" value="Update Article"/> <br/>
+                            <input className="btn btn-secondary my-2 button"type="submit" value="Update Article"/> <br/>
                           </form>
-                          <button className="btn btn-primary button" onClick={() => {cardToggle(article)}}>Show Articles</button> <br/>
+                          <button className="btn btn-primary mb-2 button" onClick={() => {cardToggle(article)}}>Show Articles</button> <br/>
                           <button className="btn btn-danger button"  onClick={(event) => { handleDeleteArticle(article)}} >Delete</button>
                         </div>
                           {/* the button below this comment the one that is acting up, it is used as the ternary for the edit and show pages*/}
