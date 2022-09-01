@@ -3,21 +3,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 function App() {
-
-
 
   const [article, setArticle] = useState("");
   const [title, setTitle] = useState("");
