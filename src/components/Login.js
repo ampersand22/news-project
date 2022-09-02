@@ -83,7 +83,7 @@ const Login = () => {
     }
 
     return (
-        <div className="App">
+         <div className="App" style = {{paddingTop: "150px"}}>
             <div>
             {toggleLogout ?
                 <button className="btn btn-outline-primary" onClick={handleLogout} class='logoutBtn'>Logout</button> :
