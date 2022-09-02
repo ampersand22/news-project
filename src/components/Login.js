@@ -83,50 +83,50 @@ const Login = () => {
     }
 
     return (
-         <div className="App" style = {{paddingTop: "150px"}}>
+        <div className="App" style = {{paddingTop: "150px"}}>
             <div>
             {toggleLogout ?
-                <button className="btn btn-outline-primary" onClick={handleLogout} class='logoutBtn'>Logout</button> :
-                <div class='appFormDiv'>
+                <button className="btn btn-outline-primary" onClick={handleLogout} className='logoutBtn'>Logout</button> :
+                <div className='appFormDiv'>
                 {toggleLogin ?
                   //login form
                 <div className="formContainer">
-                    <h1 class='formTitle'>Login Here</h1>
-                    <form onSubmit={handleLogin} class='inputForm'>
-                        <input type='text' placeholder='username' class='textInput' onChange={(event)=> {setUsername(event.target.value)}}/>
-                        <input type='password' placeholder='password' class='textInput' onChange={(event)=> {setPassword(event.target.value)}}/>
+                    <h1 className='formTitle'>Login Here</h1>
+                    <form onSubmit={handleLogin} className='inputForm'>
+                        <input type='text' placeholder='username' className='textInput' onChange={(event)=> {setUsername(event.target.value)}}/>
+                        <input type='password' placeholder='password' className='textInput' onChange={(event)=> {setPassword(event.target.value)}}/>
                         {toggleError ?
-                        <h5 class='errorMsg'>{errorMessage}</h5>
+                        <h5 className='errorMsg'>{errorMessage}</h5>
                         :
                         null
                         }
-                        <input type='submit' value='Login'  class='submitBtn btn btn-outline-primary'/>
+                        <input type='submit' value='Login'  className='submitBtn btn btn-outline-primary'/>
                     </form>
                 </div>
                 :
                 // new user form
-                <div className="App" class='formContainer'>
-                    <h1 class='formTitle'>Create an Account</h1>
-                    <form onSubmit={handleCreateUser} class='inputForm'>
-                    <input type='text' placeholder='username' class='textInput' onChange={(event)=> {setUsername(event.target.value)}}/>
-                    <input type='password' placeholder='password' class='textInput' onChange={(event)=> {setPassword(event.target.value)}}/>
+                <div className="App formContainer">
+                    <h1 className='formTitle'>Create an Account</h1>
+                    <form onSubmit={handleCreateUser} className='inputForm'>
+                    <input type='text' placeholder='username' className='textInput' onChange={(event)=> {setUsername(event.target.value)}}/>
+                    <input type='password' placeholder='password' className='textInput' onChange={(event)=> {setPassword(event.target.value)}}/>
                     {toggleError ?
-                        <h5 class='errorMsg'>{errorMessage}</h5>
+                        <h5 className='errorMsg'>{errorMessage}</h5>
                         :
                         null
                     }
-                        <input type='submit' value='Register' class='submitBtn btn btn-outline-primary'/>
+                        <input type='submit' value='Register' className='submitBtn btn btn-outline-primary'/>
                     </form>
                 </div>
                 }
-                <button onClick={handleToggleForm} class='accountBtn btn btn-outline-primary'>{toggleLogin ? 'New Account?' : 'Login'}</button>
+                <button onClick={handleToggleForm} className='accountBtn btn btn-outline-primary'>{toggleLogin ? 'New Account?' : 'Login'}</button>
             </div>
             }
     
     
         </div>
         {currentUser.username ?
-            <div class='loggedInDiv'>
+            <div className='loggedInDiv'>
             <p>Logged in as <span style={{ color: 'blue' }}> {currentUser.username} </span></p>
                 </div>
                 :
