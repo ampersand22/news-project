@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# The App.Post
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Satire News Site
 
-## Available Scripts
+### Made by Derrick Dahlitz, Isaac Pure, and Jey Ulmer  
 
-In the project directory, you can run:
 
-### `npm start`
+##### Front End of the Site  
+https://news-project-front.herokuapp.com/  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+##### Back End API  
+https://news-project-back.herokuapp.com/news  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##### Front End Github  
+https://github.com/ampersand22/news-project-front  
 
-### `npm test`
+##### Back End Github  
+https://github.com/ampersand22/news-project-back  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### User Stories
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As a user, you can view and edit articles that have already been created  
+As a user, you can create new articles, add a title, article information, image, category, and a date  
+As a user you are able to toggle between the show all articles and the create new new article page  
+As a user are able to click on edit and have it affect each index individually to toggle the edit and show sections of each card  
+As a user you are able to create a username and login to the site that is password encrypted  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Technoligies Used 
 
-### `npm run eject`
+This website was made with the MERN stack using: 
+* HTML 
+* CSS 
+* Javascript
+* Bootstrap
+* MongoAtlas
+* Heroku
+* Mongoose
+* Express
+* React
+* Node.js
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Derrick  
+The project idea was developed as a group. Github, Heroku and Atlas were worked on as a team and linked together. Back end server was created and linked to the back end database to create an API. The app.js file was worked on by the group collaboratively, merging all conflicts and organizing the branches cohesively.
+As a team we developed a cohesive workflow that allowed us to work on individual branches, merge them together, and test them for errors before deploying at checkpoints to the main application. Most of the styling was created with Bootstrap and assisted with CSS and inline styling for properties that were unable to be written in Bootstrap. The users collection took some time to connect successfully on local host. Ultimately, the login feature was successfully debugged. The middleware placed at the bottom of the app function had to be separated and moved from the object. The login was added as a proof of concept and does not inhibit the user from read and write functionality on the website.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+##### Unfinished Functionality
 
-## Learn More
+We ran out of time and were unable to place the content behind the login feature.  
+Did not change the Date to a Date in the schema to time stamp the new article/updated article.  
+Did not place different sections in components.  
+Ran out of time to create a sidebar to place images in the public folder as adds.  
+Ran out of time to disassociate the "Show More/ Show less" buttons from all toggling together.  
+Unable to figure out how to make one index full screen and hide all other indexes.  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
