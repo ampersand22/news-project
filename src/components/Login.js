@@ -8,11 +8,10 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const [toggleLogout, setToggleLogout] = useState(false)
     const [currentUser, setCurrentUser] = useState({})
-  
+    
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    
     const handleCreateUser = (event) => {
         event.preventDefault()
         event.currentTarget.reset()
@@ -86,7 +85,7 @@ const Login = () => {
         <div className="App" style = {{paddingTop: "150px"}}>
             <div>
             {toggleLogout ?
-                <button className="btn btn-outline-primary" onClick={handleLogout} className='logoutBtn'>Logout</button> :
+                <button className="btn btn-outline-primary logoutBtn" onClick={handleLogout}>Logout</button> :
                 <div className='appFormDiv'>
                 {toggleLogin ?
                   //login form
