@@ -22,7 +22,7 @@ const Login = () => {
         }
         setUsername('')
         setPassword('')
-        axios.post('http://localhost:3003/createaccount', userObj).then((response) => {
+        axios.post('https://news-project-back.herokuapp.com/createaccount', userObj).then((response) => {
             if(response.data.username){
                 console.log(response);
                 setToggleError(false)
@@ -45,7 +45,7 @@ const Login = () => {
         }
         setUsername('')
         setPassword('')
-        axios.put('http://localhost:3003/login', userObj).then((response) => {
+        axios.put('https://news-project-back.herokuapp.com/login', userObj).then((response) => {
             if(response.data.username){
                 console.log(response);
                 setToggleError(false)
