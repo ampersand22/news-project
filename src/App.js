@@ -1,6 +1,8 @@
 import './App.css';
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import Login from './components/Login';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -31,7 +33,7 @@ function App() {
     }
     const handleImageChange = (e) => {
       setImage(e.target.value);
-      }
+      } 
 
 
 
@@ -114,7 +116,7 @@ function App() {
 
   return (
     <div className="container-fluid">
-      <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light mb-3">
+      <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-dark mb-3 rounded">
         <div className="container-fluid">
           <a className="navbar-brand" onClick={showArticlesPage} href="#">
             <img src="/app_post_logo.png" alt="" width="auto" height="auto"/>
@@ -125,15 +127,18 @@ function App() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto" style={{fontSize:"1.5em"}}>
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" onClick={showArticlesPage} href="#">Show All Articles</a>
+                <a className="nav-link active" aria-current="page" style={{color:"white"}} onClick={showArticlesPage} href="#">Show All Articles</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" onClick={newArticlePage} href="#">Add New Article</a>
+                <a className="nav-link active" style={{color:"white"}} onClick={newArticlePage}  href="#">Add New Article</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
+
+    <Login />
+
     { newArticleForm ?
       <section className='createForm' style={{paddingTop:"150px"}}>
         <form className="newForm" onSubmit={handleNewArticleFormSubmit}>
@@ -161,7 +166,8 @@ function App() {
         </form>
       </section>
     : null }
-    <div style={{paddingTop:"150px"}}>
+
+    <div className="mb-3" style={{paddingTop:"150px"}}>
       { showArticles ?
         <section className='card-deck'>
           <div className="row"></div>
@@ -216,7 +222,6 @@ function App() {
                         </div>
                       </div>
                     </div>
-
                 )
               })
             }
@@ -224,7 +229,10 @@ function App() {
         </section>
       : null}
     </div>
-    </div>
+    
+    <Footer />
+    
+  </div>
   );
 }
 
