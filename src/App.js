@@ -1,6 +1,8 @@
 import './App.css';
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import Login from './components/Login';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -134,6 +136,9 @@ function App() {
           </div>
         </div>
       </nav>
+
+    <Login />
+
     { newArticleForm ?
       <section className='createForm' style={{paddingTop:"150px"}}>
         <form className="newForm" onSubmit={handleNewArticleFormSubmit}>
@@ -161,6 +166,7 @@ function App() {
         </form>
       </section>
     : null }
+
     <div className="mb-3" style={{paddingTop:"150px"}}>
       { showArticles ?
         <section className='card-deck'>
@@ -223,6 +229,9 @@ function App() {
         </section>
       : null}
     </div>
+    
+    <Footer />
+    
   </div>
   );
 }
