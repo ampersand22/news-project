@@ -187,7 +187,7 @@ function App() {
                               <label htmlFor = "floatingCategory">Category</label>
                             </div>
                             <div className = "form-floating">
-                              <textarea className = "form-control mt-2" id = "floatingArticle" defaultChecked = {article.article} onChange = {handleArticleChange}></textarea>
+                              <textarea className = "form-control mt-2" id = "floatingArticle" defaultValue = {article.article} onChange = {handleArticleChange}></textarea>
                               <label htmlFor = "floatingArticle"> Article </label>
                             </div>
                             <div className = "form-floating">
